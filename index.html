@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beatstream</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="https://res.cloudinary.com/unanimouscreator/image/upload/v1751868394/Logo_v3yefy.jpg"
+        type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+    <div id="wh_maximized_player_view" class="wh_maximized_player_view wh_view">
+        <button class="wh_max_back_button"><i class="fas fa-arrow-left"></i> Back</button>
+        <div class="wh_max_album_info">
+            <h2 class="wh_max_album_title"></h2>
+            <p class="wh_max_album_artist"></p>
+            <p class="wh_max_album_year"></p>
+
+        </div>
+
+        <div class="wh_max_lyrics_container">
+            <p class="wh_lyrics_content"></p>
+        </div>
+        <div id="wh_maximized_player_controls_container"></div>
+    </div>
+
+    <div class="wh_container">
+        <div class="wh_left_sidebar">
+            <div class="wh_sidebar_top">
+                <a href="#">
+                    <h1 class="wh_app_title">Beatstream</h1>
+                </a>
+                <div class="wh_nav_links">
+                    <a href="#" class="wh_nav_item active" data-view="home" id="wh_home_link">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="#" class="wh_nav_item" data-view="search" id="wh_search_link">
+                        <i class="fas fa-search"></i>
+                        <span>Search</span>
+                    </a>
+
+                    <a href="#" class="wh_nav_item" data-view="playlists" id="wh_playlists_link">
+                        <i class="fas fa-list"></i>
+                        <span>Playlist</span>
+                    </a>
+
+                    <a href="#" class="wh_nav_item" data-modal-target="#wh_request_modal" id="wh_request_songs_link">
+                        <i class="fas fa-music"></i> <span>Request Songs</span>
+                    </a>
+
+                    <a href="#" class="wh_nav_item" data-modal-target="#wh_about_modal" id="wh_about_link">
+                        <i class="fas fa-info-circle"></i>
+                        <span>About</span>
+                    </a>
+                </div>
+            </div>
+            <div class="wh_sidebar_bottom">
+                <div class="wh_playlists">
+                    <div class="wh_playlist_list">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wh_main_content">
+            <div class="wh_view active wh_home_view" id="wh_home_view">
+                <div id="wh_years_container">
+                </div>
+
+            </div>
+
+            <div class="wh_view wh_search_view" id="wh_search_view">
+                <h2>Search</h2>
+                <input type="text" class="wh_search_input" placeholder="Search movies, years, songs, playlists">
+                <div class="wh_albums_grid wh_search_results_grid" id="wh_search_results">
+                </div>
+            </div>
+
+            <div class="wh_view wh_playlists_view" id="wh_playlists_view">
+                <h2>My Playlists</h2>
+                <div class="wh_playlists_grid">
+                </div>
+            </div>
+
+            <div class="wh_view wh_album_detail_view" id="wh_album_detail_view">
+                <button class="wh_back_button" id="wh_back_button"><i class="fas fa-arrow-left"></i> Back</button>
+                <div class="wh_album_header">
+                    <img src="https://res.cloudinary.com/ruthwik/image/upload/v1753621318/Logo_dbk8gc.jpg"
+                        alt="Album Cover" class="wh_album_cover" id="wh_album_cover">
+                    <div class="wh_album_info">
+                        <h1 class="wh_album_title" id="wh_album_title"></h1>
+                        <p class="wh_album_artist" id="wh_album_artist"></p>
+                        <p class="wh_album_year" id="wh_album_year"></p>
+                        <div class="wh_album_actions">
+                            <button class="wh_shuffle_album_button" id="wh_shuffle_album_button"><i
+                                    class="fas fa-shuffle"></i> <span>Shuffle</span></button>
+
+
+
+
+
+
+
+
+
+                            <!-- remove play album button -->
+
+                            <button class="wh_play_album_button">
+                                <i class="fas fa-play"></i> <span>Play Album</span>
+                            </button>
+
+
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="wh_album_songs">
+                    <div class="wh_album_song_list" id="wh_album_song_list">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wh_music_player wh_player_bar">
+        <div class="wh_player_left wh_now_playing">
+            <div class="wh_now_playing_cover_container">
+                <img src="https://res.cloudinary.com/ruthwik/image/upload/v1753621318/Logo_dbk8gc.jpg"
+                    alt="Now Playing Cover" class="wh_now_playing_cover" id="wh_now_playing_cover">
+                <div class="wh_maximize_overlay">
+                    <i class="fas fa-expand-alt wh_maximize_icon"></i>
+                </div>
+            </div>
+            <div class="wh_song_info">
+                <div class="wh_now_playing_title" id="wh_now_playing_title">Select a song . . .</div>
+                <marquee class="artist-marquee" scrollamount="3.5">
+                    <div class="wh_now_playing_artist" id="wh_now_playing_artist"></div>
+                </marquee>
+                <div class="scrolling-content"> </div>
+            </div>
+        </div>
+
+        <div id="wh_no_song_modal" class="wh_modal">
+            <div class="wh_modal_content">
+                <span class="wh_close_button no-song-close-button" id="wh_no_song_close_button">&times;</span>
+                <p>Please select and play a song first to maximize the player.</p>
+                <div class="wh_modal_actions">
+                    <button id="wh_ok_no_song_btn">OK</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="wh_player_center">
+            <div class="wh_player_controls">
+                <button class="wh_repeat_button" id="wh_repeat_button"><i class="fas fa-repeat"></i></button>
+                <button class="wh_prev_button" id="wh_prev_button"><i class="fas fa-backward-step"></i></button>
+                <button class="wh_play_pause_button" id="wh_play_pause_button"><i class="fas fa-play"></i></button>
+                <button class="wh_next_button" id="wh_next_button"><i class="fas fa-forward-step"></i></button>
+                
+                <button class="wh_timer_button" id="wh_timer_button" title="Set Sleep Timer"><i
+                        class="fas fa-clock"></i></button>
+                <span id="wh_countdown_display" style="display:none;"></span>
+            </div>
+            <div class="wh_progress_bar">
+                <span class="wh_current_time" id="wh_current_time">0:00</span>
+                <input type="range" class="wh_progress_slider" id="wh_progress_bar" value="0" min="0" max="100">
+                <span class="wh_total_time" id="wh_total_time">0:00</span>
+            </div>
+        </div>
+        <div class="wh_player_right">
+        </div>
+    </div>
+
+    <div id="wh_timer_options_modal" class="wh_modal">
+        <div class="wh_modal_content">
+            <span class="wh_close_button timer-close-button" id="wh_timer_close_button">&times;</span>
+            <h3>Set Sleep Timer</h3>
+            <ul id="wh_timer_options_list">
+                <button data-minutes="5" id="wh_set_5_min_timer">5 Minutes</button>
+                <button data-minutes="10" id="wh_set_10_min_timer">10 Minutes</button>
+                <button data-minutes="15" id="wh_set_15_min_timer">15 Minutes</button>
+                <button data-minutes="30" id="wh_set_30_min_timer">30 Minutes</button>
+                <button data-minutes="45" id="wh_set_45_min_timer">45 Minutes</button>
+                <button data-minutes="60" id="wh_set_60_min_timer">60 Minutes</button>
+            </ul>
+            <button id="wh_cancel_timer_btn" style="display: none; margin-top: 20px;">Cancel Timer</button>
+        </div>
+    </div>
+
+    <div id="wh_timer_cancelled_modal" class="wh_modal">
+        <div class="wh_modal_content">
+            <span class="wh_close_button cancelled-timer-close-button"
+                id="wh_cancelled_timer_close_button">&times;</span>
+            <h3>Timer Cancelled</h3>
+            <p>The sleep timer has been cancelled.</p>
+            <div class="wh_modal_actions">
+                <button id="wh_ok_cancelled_timer_btn">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="wh_timer_ended_modal" class="wh_modal">
+        <div class="wh_modal_content">
+            <span class="wh_close_button timer-ended-close-button" id="wh_timer_ended_close_button">&times;</span>
+            <h3>Sleep Timer Ended</h3>
+            <p>Music has been paused.</p>
+            <div class="wh_modal_actions">
+                <button id="wh_ok_timer_ended_btn">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="wh_about_modal" class="wh_modal">
+        <div class="wh_modal_content">
+            <span class="wh_close_button">&times;</span>
+            <h4>About Beatstream</h4>
+            <p>Beatstream is a music application designed for seamless music discovery and playback. You can find songs
+                in a year wise organized manner at home page. You can also search for years, albums, songs, playlists
+                and artists in search bar. The unique features in this music webpage is requesting songs and sleep
+                timer. Through the given link you can request your favorite songs. There are several options to set
+                sleep timer too. Another unique feature is the flickering color changing effects for shuffle mode and
+                loop mode.
+                <br> <br>
+                Go through guidence given below for all features and enjoy the seamless music 🎵
+            </p>
+
+            <h3 style="color: #1DB954;">Navigation Links</h3>
+            <ul>
+                <li><b>Home :</b>Displays the main collection of music organized by years.</li>
+                <li><b>Search :</b> Switches to the search interface where you can search for movies, songs, playlists.
+                </li>
+                <li><b>Playlist :</b> Shows a list of playlists.</li>
+                <li><b>Request Songs :</b> Opens a pop up with a button as "Submit your songs" to submit song requests.
+                </li>
+                <li><b>About :</b> Opens a modal displaying information about the Beatstream application.</li>
+            </ul>
+
+            <h3 style="color: #1DB954;">Features</h3>
+            <ul>
+                <li><b>Sleep Timer Feature :</b> Here you see list of options to select time to turn off your music.
+                </li>
+                <li><b>Album/Playlist Cards :</b> Clicking on these cards navigates to the detailed view of the
+                    selected album or playlist.</li>
+                <li><b>Play Album Button :</b> Available in the album, when it clicked it starts playing from the first
+                    song of that album.</li>
+                <li><b>Song Items :</b> Clicking on an individual song within an album or playlist list starts playing
+                    that specific song.</li>
+                <li><b>Search Input :</b> Used to search for albums or years or artists or playlists.</li>
+            </ul>
+
+            <h3 style="color: #1DB954;">Buttons Usage</h3>
+            <ul>
+                <li><b>Shuffle Button :</b> On or Off shuffle mode for songs shuffling. When it is in on mode then you
+                    will get color changing effect.</li>
+                <li><b>Previous Button :</b> Goes back to the previous song in the current queue or playlist.</li>
+                <li><b>Play/Pause Button :</b> Toggles the playback state of the current song (play or pause).</li>
+                <li><b>Next Button :</b> Goes to the next song in the current queue or playlist.</li>
+                <li><b>Repeat Button :</b> On or Off repeat mode for repeating current song. When it is in on mode then
+                    you will get color changing effect.</li>
+                <li><b>Progress Bar Slider :</b> Allows users to scrub through the current song's playback.</li>
+            </ul>
+
+            <h3 style="color: #1DB954;">Modal Interactions</h3>
+            <ul>
+                <li><b>OK Buttons (Timer Ended, Timer Cancelled, No Song Modals) :</b> Closes the respective modal
+                    messages.</li>
+                <li><b>Close Buttons (Modals) :</b> Closes any open modal dialogs (e.g., About, Request Songs, Timer
+                    Options).</li>
+                <li><b>Maximize Overlay :</b> Clicking on the compact "Now Playing" album cover or
+                    the overlay opens the maximized player view.</li>
+                <li><b>Maximized Player Back Button :</b> Closes the maximized player view and returns to the main
+                    application interface.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="wh_request_modal" class="wh_modal">
+        <div class="wh_modal_content">
+            <span class="wh_close_button">&times;</span>
+            <h3 style="color: #1DB954;">Give Your Favorite Songs</h3>
+            <h2 style="color: #ff0055;">Note:</h2>
+            <ol>
+                <li> Make sure that you have marked the email check box before submitting your requests, otherwise the
+                    form will not submit. </li> <br>
+                <li>To avoid mistakes, check your song details twice before submitting. </li>
+            </ol>
+            <p style="color: #deff05;">Click the button below to submit your song requests!</p>
+            <button id="wh_submit_songs_button" class="wh_action_button">Submit your songs</button>
+        </div>
+    </div>
+
+    <audio id="wh_audio_player"></audio>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <script src="playlists.js"></script>
+</body>
+
+</html>
